@@ -11,3 +11,9 @@ type getDataProps = {
     lastName: string | undefined | null
     profileImage: string | undefined | null
 }
+
+type getStripeSessionProps = {
+    priceId: string
+    domainUrl: string
+    customerId: string
+}

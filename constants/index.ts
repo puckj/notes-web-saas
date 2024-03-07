@@ -20,3 +20,11 @@ export const colorScheme = [
     { value: "theme-yellow", name: 'Yellow' },
     { value: "theme-violet", name: 'Violet' },
 ]
+
+export const featureItems = [
+    {name:"Lorem ipsum dolor sit."},
+    {name:"Illo delectus veniam ullam eius quae"},
+    {name:"Esse quasi pariatur eos dolore maxime"},
+    {name:"Voluptatem ipsum consectetur sit amet"},
+    {name:"tenetur reprehenderit tempore illum."},
+]
