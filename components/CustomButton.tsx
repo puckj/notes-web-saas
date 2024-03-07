@@ -32,7 +32,27 @@ export const StripeSubscriptionCreationButton = () => {
           Please wait
         </Button>
       ) : (
-        <Button className="w-full">Create Subscription</Button>
+        <Button className="w-full" type="submit">
+          Create Subscription
+        </Button>
+      )}
+    </>
+  );
+};
+
+export const StripePortalButton = () => {
+  const { pending } = useFormStatus();
+  return (
+    <>
+      {pending ? (
+        <Button disabled className="w-fit">
+          <Loader2 className="mr-2 w-4 h-4 animate-spin" />
+          Please wait
+        </Button>
+      ) : (
+        <Button className="w-fit" type="submit">
+          View payment details
+        </Button>
       )}
     </>
   );
