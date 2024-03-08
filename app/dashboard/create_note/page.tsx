@@ -7,7 +7,7 @@ const CreateNotePage = async () => {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
-  const postData = async (formData: FormData) => {
+  const createNoteHandler = async (formData: FormData) => {
     "use server";
 
     if (!user) {
@@ -27,7 +27,7 @@ const CreateNotePage = async () => {
     return redirect("/dashboard");
   };
 
-  return <NoteForm formAction={postData} mode="create" />;
+  return <NoteForm formAction={createNoteHandler} mode="create" />;
 };
 
 export default CreateNotePage;

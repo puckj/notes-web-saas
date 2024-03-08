@@ -50,7 +50,7 @@ const NoteForm = ({ formAction, mode, noteData }: NoteFormProps) => {
           </div>
         </CardContent>
         <CardFooter className="flex justify-between">
-          <Button asChild variant="destructive">
+          <Button asChild variant="link">
             <Link href="/dashboard">Cancel</Link>
           </Button>
           <SubmitButton />
