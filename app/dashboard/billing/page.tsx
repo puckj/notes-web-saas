@@ -15,8 +15,10 @@ import {
   StripePortalButton,
   StripeSubscriptionCreationButton,
 } from "@/components/CustomButton";
+import { unstable_noStore as noStore } from "next/cache";
 
 const getUserData = async (userId: string) => {
+  noStore()
   const data = await prisma.subscription.findUnique({
     where: {
       userId: userId,

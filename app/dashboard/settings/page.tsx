@@ -1,4 +1,4 @@
-import {SubmitButton} from "@/components/CustomButton";
+import { SubmitButton } from "@/components/CustomButton";
 import {
   Card,
   CardContent,
@@ -20,9 +20,10 @@ import {
 } from "@/components/ui/select";
 import { colorScheme } from "@/constants";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, unstable_noStore as noStore } from "next/cache";
 
 const getUserData = async (userId: string) => {
+  noStore();
   const data = await prisma?.user.findUnique({
     where: {
       id: userId,

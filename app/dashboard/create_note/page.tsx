@@ -2,8 +2,10 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import prisma from "@/app/lib/db";
 import { redirect } from "next/navigation";
 import NoteForm from "@/components/NoteForm";
+import { unstable_noStore as noStore } from "next/cache";
 
 const CreateNotePage = async () => {
+  noStore();
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 

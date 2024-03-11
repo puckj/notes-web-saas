@@ -2,9 +2,10 @@ import NoteForm from "@/components/NoteForm";
 import prisma from "@/app/lib/db";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { redirect } from "next/navigation";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, unstable_noStore as noStore } from "next/cache";
 
 const getNoteData = async ({ userId, noteId }: getNoteDataProps) => {
+  noStore();
   const data = await prisma.note.findUnique({
     where: {
       id: noteId,
@@ -44,7 +45,7 @@ const EditNotePage = async ({ params }: { params: { id: string } }) => {
         description: description,
       },
     });
-    revalidatePath('/dashboard')
+    revalidatePath("/dashboard");
     return redirect("/dashboard");
   };
 
