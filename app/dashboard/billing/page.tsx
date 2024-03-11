@@ -18,7 +18,7 @@ import {
 import { unstable_noStore as noStore } from "next/cache";
 
 const getUserData = async (userId: string) => {
-  noStore()
+  noStore();
   const data = await prisma.subscription.findUnique({
     where: {
       userId: userId,
@@ -57,7 +57,7 @@ const BillingPage = async () => {
     }
     const subscriptionUrl = await getStripeSession({
       customerId: dbUser.stripeCustomerId,
-      domainUrl: "http://localhost:3000",
+      domainUrl: process.env.WEBSITE_URL as string,
       priceId: process.env.STRIPE_PRICE_ID as string,
     });
     return redirect(subscriptionUrl);
@@ -67,7 +67,7 @@ const BillingPage = async () => {
     "use server";
     const session = await stripe.billingPortal.sessions.create({
       customer: userData?.user.stripeCustomerId as string,
-      return_url: "http://localhost:3000/dashboard/billing",
+      return_url: `${process.env.WEBSITE_URL}/dashboard/billing`,
     });
     return redirect(session.url);
   };
